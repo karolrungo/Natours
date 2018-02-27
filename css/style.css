@@ -29,7 +29,7 @@ body {
     box-sizing: border-box;
 }
 
-header {
+.header {
     height: 95vh;
     background-image: linear-gradient(
         to right,
@@ -43,13 +43,13 @@ header {
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     height: 3.5rem;
 }
 
@@ -60,7 +60,7 @@ header {
     margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
@@ -69,7 +69,7 @@ header {
     animation: moveInLeft 1s;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -78,7 +78,7 @@ header {
     animation: moveInRight 1s;
 }
 
-.text-box{
+.header__text-box{
     position: absolute;
     top: 40%;
     left: 50%;
@@ -169,12 +169,12 @@ header {
     opacity: 0;
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
 
-.btn-white::after{
+.btn--white::after{
     content: '';
     display: inline-block;
     height: 100%;
@@ -183,7 +183,7 @@ header {
     background-color: inherit;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveToTop 0.5s;
     animation-delay: .75s;
     animation-fill-mode: backwards;
