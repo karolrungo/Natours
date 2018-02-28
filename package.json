@@ -1,0 +1,22 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Landing page for natours",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rungokarol/Natours.git"
+  },
+  "author": "Karol Rungo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rungokarol/Natours/issues"
+  },
+  "homepage": "https://github.com/rungokarol/Natours#readme",
+  "devDependencies": {
+    "node-sass": "^4.7.2"
+  }
+}
