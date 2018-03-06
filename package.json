@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Landing page for natours",
   "main": "index.js",
-  "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rungokarol/Natours.git"
@@ -17,6 +15,13 @@
   },
   "homepage": "https://github.com/rungokarol/Natours#readme",
   "devDependencies": {
-    "node-sass": "^4.7.2"
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0"
   }
 }
