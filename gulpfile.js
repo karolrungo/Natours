@@ -1,65 +1,98 @@
-const gulp = require('gulp')
-const sass = require('gulp-sass')
-const rename = require('gulp-rename')
-const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
-const cleanCss = require('gulp-clean-css');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
-const imagemin = require('gulp-imagemin');
-const changed = require('gulp-changed');
-const browserSync = require('browser-sync');
+var gulp = require('gulp');
+var browserSync = require('browser-sync');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
+var cleanCSS = require('gulp-clean-css');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var imagemin = require('gulp-imagemin');
+var changed = require('gulp-changed');
+var htmlMin = require('gulp-htmlmin');
+var del = require('del');
+var sequence = require('run-sequence');
 
-gulp.task('reload', function(){
-    browserSync.reload();
+var config = {
+  dist: 'dist/',
+  src: 'src/',
+  cssin: 'src/css/**/*.css',
+  jsin: 'src/js/**/*.js',
+  imgin: 'src/img/**/*.{jpg,jpeg,png,gif}',
+  htmlin: 'src/*.html',
+  scssin: 'src/scss/**/*.scss',
+  cssout: 'dist/css/',
+  jsout: 'dist/js/',
+  imgout: 'dist/img/',
+  htmlout: 'dist/',
+  scssout: 'src/css/',
+  cssoutname: 'style.css',
+  jsoutname: 'script.js',
+  cssreplaceout: 'css/style.css',
+  jsreplaceout: 'js/script.js'
+};
+
+gulp.task('reload', function() {
+  browserSync.reload();
 });
 
-gulp.task('sass', function(){
-    return gulp.src('sass/**/*.scss')
-                .pipe(sourcemaps.init())
-                .pipe(sass().on('error', sass.logError))
-                .pipe(autoprefixer({
-                    browsers: ['last 2 versions'],
-                    cascade: false,
-                }))
-                .pipe(sourcemaps.write())
-                .pipe(rename('style.css'))
-                .pipe(gulp.dest('css'))
-                .pipe(browserSync.stream());
+gulp.task('serve', ['sass'], function() {
+  browserSync({
+    server: config.src
+  });
+
+  gulp.watch([config.htmlin, config.jsin], ['reload']);
+  gulp.watch(config.scssin, ['sass']);
 });
 
-gulp.task('min-css', function(){
-    return gulp.src('css/**/*.css')
-                .pipe(concat('style.css'))
-                .pipe(cleanCss())
-                .pipe(rename('style.min.css'))
-                .pipe(gulp.dest('css'));
+gulp.task('sass', function() {
+  return gulp.src(config.scssin)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 3 versions']
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.scssout))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('ugly-js', function(){
-    return gulp.src('js/**/*.js')
-                .pipe(concat('script.js'))
-                .pipe(uglify().on('error', function(e){
-                    console.log(e);
-                }))
-                .pipe(rename('script.ugly.js'))
-                .pipe(gulp.dest('js'));
+gulp.task('css', function() {
+  return gulp.src(config.cssin)
+    .pipe(concat(config.cssoutname))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest(config.cssout));
 });
 
-gulp.task('min-img', function(){
-    return gulp.src('img/**/*.{jpg,jpeg,png,gif}')
-                .pipe(changed('img-min'))
-                .pipe(imagemin())
-                .pipe(gulp.dest('img-min'))
-
+gulp.task('js', function() {
+  return gulp.src(config.jsin)
+    .pipe(concat(config.jsoutname))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.jsout));
 });
 
-gulp.task('run', ['sass'], function(){
-    browserSync({
-        server: './'
-    });
-    gulp.watch('*.html', ['reload']);
-    gulp.watch('sass/**/*.scss', ['sass']);
+gulp.task('img', function() {
+  return gulp.src(config.imgin)
+    .pipe(changed(config.imgout))
+    .pipe(imagemin())
+    .pipe(gulp.dest(config.imgout));
 });
 
-gulp.task('default', ['run']);
+gulp.task('html', function() {
+  return gulp.src(config.htmlin)
+    .pipe(htmlMin({
+      sortAttributes: true,
+      sortClassName: true,
+      collapseWhitespace: true
+    }))
+    .pipe(gulp.dest(config.dist))
+});
+
+gulp.task('clean', function() {
+  return del([config.dist]);
+});
+
+gulp.task('build', function() {
+  sequence('clean', ['html', 'js', 'css', 'img']);
+});
+
+gulp.task('default', ['serve']);
