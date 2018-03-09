@@ -11,6 +11,7 @@ var changed = require('gulp-changed');
 var htmlMin = require('gulp-htmlmin');
 var del = require('del');
 var sequence = require('run-sequence');
+var rename = require('gulp-rename');
 
 var config = {
   dist: 'dist/',
@@ -19,7 +20,7 @@ var config = {
   jsin: 'src/js/**/*.js',
   imgin: 'src/img/**/*.{jpg,jpeg,png,gif}',
   htmlin: 'src/*.html',
-  scssin: 'src/scss/**/*.scss',
+  scssin: 'src/sass/**/*.scss',
   cssout: 'dist/css/',
   jsout: 'dist/js/',
   imgout: 'dist/img/',
@@ -49,9 +50,11 @@ gulp.task('sass', function() {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
-      browsers: ['last 3 versions']
+        browsers: ['last 2 versions'],
+        cascade: false,
     }))
     .pipe(sourcemaps.write())
+    .pipe(rename(config.cssoutname))
     .pipe(gulp.dest(config.scssout))
     .pipe(browserSync.stream());
 });
