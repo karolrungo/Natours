@@ -12,6 +12,7 @@ var htmlMin = require('gulp-htmlmin');
 var del = require('del');
 var sequence = require('run-sequence');
 var rename = require('gulp-rename');
+var babel = require('gulp-babel');
 
 var config = {
   dist: 'dist/',
@@ -67,7 +68,10 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
-  return gulp.src(config.jsin)
+    return gulp.src(config.jsin)
+    .pipe(babel({
+        presets: ['env']
+    }))
     .pipe(concat(config.jsoutname))
     .pipe(uglify())
     .pipe(gulp.dest(config.jsout));
