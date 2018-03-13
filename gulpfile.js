@@ -13,6 +13,7 @@ var del = require('del');
 var sequence = require('run-sequence');
 var rename = require('gulp-rename');
 var babel = require('gulp-babel');
+var plumber = require('gulp-plumber');
 
 var config = {
   dist: 'dist/',
@@ -48,6 +49,7 @@ gulp.task('serve', ['sass'], function() {
 
 gulp.task('sass', function() {
   return gulp.src(config.scssin)
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
@@ -62,6 +64,7 @@ gulp.task('sass', function() {
 
 gulp.task('css', function() {
   return gulp.src(config.cssin)
+    .pipe(plumber())
     .pipe(concat(config.cssoutname))
     .pipe(cleanCSS())
     .pipe(gulp.dest(config.cssout));
@@ -69,6 +72,7 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
     return gulp.src(config.jsin)
+    .pipe(plumber())
     .pipe(babel({
         presets: ['env']
     }))
@@ -79,6 +83,7 @@ gulp.task('js', function() {
 
 gulp.task('img', function() {
   return gulp.src(config.imgin)
+    .pipe(plumber())
     .pipe(changed(config.imgout))
     .pipe(imagemin())
     .pipe(gulp.dest(config.imgout));
@@ -86,6 +91,7 @@ gulp.task('img', function() {
 
 gulp.task('html', function() {
   return gulp.src(config.htmlin)
+    .pipe(plumber())
     .pipe(htmlMin({
       sortAttributes: true,
       sortClassName: true,
