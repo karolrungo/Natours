@@ -19,12 +19,12 @@
             opacity: 0;
         }
     }
-    
+
     &:active{
         transform: translateY(-0.1rem);
         box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
     }
-    
+
     &::after {
         content: "";
         display: inline-block;
@@ -43,11 +43,15 @@
         color: $color-grey-dark;
 
         &::after{
-            content: '';
-            display: inline-block;
-            height: 100%;
-            width: 100%;
-            color: inherit;
+            background-color: inherit;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after{
             background-color: inherit;
         }
     }
