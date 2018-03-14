@@ -2,17 +2,17 @@
     //FUNCTIONALITY
     perspective: 150rem;
     position: relative;
-    height: 50rem;
+    height: 55rem;
 
     &__side{
-        height: 50rem;
+        height: 55rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         backface-visibility: hidden;
-        border-radius: .3rem;
+        border-radius: 1rem;
         overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
 
@@ -23,7 +23,9 @@
             transform: rotateY(180deg);
 
             &-1{
-                background-image: linear-gradient(to bottom right, $color-secondary-light, $color-secondary-dark)
+                background-image: linear-gradient(to bottom right,
+                                                  $color-secondary-light,
+                                                  $color-secondary-dark)
             }
         }
     }
@@ -44,15 +46,24 @@
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
         &--1{
-            background-image: linear-gradient(to bottom right, $color-secondary-light, $color-secondary-dark), url('../img/nat-5.jpg')
+            background-image: linear-gradient(to bottom right,
+                                              $color-secondary-light,
+                                              $color-secondary-dark),
+                              url('../img/nat-5.jpg')
         }
 
         &--2{
-            background-image: url('../img/nat-5.jpg')
+            background-image: linear-gradient(to bottom right,
+                                              $color-tertiary-light,
+                                              $color-tertiary-dark),
+                              url('../img/nat-6.jpg')
         }
 
         &--3{
-            background-image: url('../img/nat-5.jpg')
+            background-image: linear-gradient(to bottom right,
+                                              $color-primary-light,
+                                              $color-primary-dark),
+                              url('../img/nat-6.jpg')
         }
     }
 
@@ -65,14 +76,51 @@
         position: absolute;
         top: 12rem;
         right: 2rem;
-        width: 75%;
+        width: 80%;
 
-        & span{
+        &-span{
             padding: 1rem 1.5rem;
-            background-image: linear-gradient(to right,
-            rgba($color-secondary-light, .85),
-            rgba($color-secondary-dark, .85));
+            box-decoration-break: clone;
 
+            &-1{
+            background-image: linear-gradient(to right,
+                                              rgba($color-secondary-light, .85),
+                                              rgba($color-secondary-dark, .85));
+
+            }
+            &-2{
+            background-image: linear-gradient(to right,
+                                              rgba($color-tertiary-light, .85),
+                                              rgba($color-tertiary-dark, .85));
+
+            }
+            &-3{
+            background-image: linear-gradient(to right,
+                                              rgba($color-primary-light, .85),
+                                              rgba($color-primary-dark, .85));
+
+            }
+        }
+    }
+
+    &__details{
+        padding: 3rem;
+
+        ul{
+            list-style:none;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.5rem;
+
+            li{
+                padding: 1rem;
+
+                &:not(:last-child)
+                {
+                    border-bottom: 1px solid $color-grey-light2;
+                }
+            }
         }
     }
 
