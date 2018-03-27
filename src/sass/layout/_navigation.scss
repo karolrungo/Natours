@@ -9,6 +9,7 @@
 
   &__checkbox:checked ~ &__nav{
     opacity: 1;
+    visibility: visible;
     width: 100%;
   }
 
@@ -22,6 +23,14 @@
     right: 6rem;
     z-index: 2000;
     box-shadow: 0 1rem 3rem rgba($color-black, .4);
+    text-align: center;
+    display: grid;
+    cursor: pointer;
+  
+    @include respond(tab-port){
+      top: 4rem;
+      right: 4rem;
+    }
   }
 
   &__background{
@@ -33,6 +42,12 @@
     right: 6.5rem;
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     z-index: 1000;
+    transition: all .8s;
+
+    @include respond(tab-port){
+      top: 4.5rem;
+      right: 4.5rem;
+    }
   }
 
   &__nav{
@@ -40,18 +55,21 @@
     width: 100%;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 1500;
     display: grid;
 
     opacity: 0;
+    visibility: hidden;
     width: 0;
+    transition: all .8s;
   }
 
   &__list{
     margin: auto;
     list-style: none;
     text-align: center;
+
   }
 
   &__item{
@@ -83,5 +101,46 @@
       transition: translateX(1rem);
     }
   }
-}
+
+  &__icon{
+    position: relative;
+    margin: auto;
+
+    &,
+    &:before,
+    &:after{
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark3;
+      display: inline-block;
+      transition: all .2s;
+    }
+
+    &:before,
+    &:after{
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {top: -.8rem;}
+    &::after {top: .8rem;}
+  }
+
+  &__button:hover  &__icon::before {top: -1rem;}
+  &__button:hover  &__icon::after {top: 1rem;}
+
+  &__checkbox:checked + &__button &__icon{
+    background-color: transparent;
+  }
+  &__checkbox:checked + &__button &__icon:before{
+    top: 0;
+    transform: rotate(45deg);
+  }
+  &__checkbox:checked + &__button &__icon:after{
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  }
 

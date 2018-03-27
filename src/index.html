@@ -15,7 +15,7 @@
         <div class="navigation">
           <input type="checkbox" class='navigation__checkbox' id='navi_toggle'>
           <label class='navigation__button' for="navi_toggle">
-              menu
+              <span class="navigation__icon">&nbsp;</span>
           </label>
           <div class="navigation__background">&nbsp;</div>
           <nav class="navigation__nav">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </section>
-            <section class="section-course">
+            <section class="section-tours">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
                         Most popular tours
@@ -144,7 +144,7 @@
                                         <p class="card__price-only">Only</p>
                                         <p class="card__price-value">$297</p>
                                     </div>
-                                    <a class="btn btn--white" href="#">Book now</a>
+                                    <a class="btn btn--white" href="#popup">Book now</a>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                                         <p class="card__price-only">Only</p>
                                         <p class="card__price-value">$497</p>
                                     </div>
-                                    <a class="btn btn--white" href="#">Book now</a>
+                                    <a class="btn btn--white" href="#popup">Book now</a>
                                 </div>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                         <p class="card__price-only">Only</p>
                                         <p class="card__price-value">$897</p>
                                     </div>
-                                    <a class="btn btn--white" href="#">Book now</a>
+                                    <a class="btn btn--white" href="#popup">Book now</a>
                                 </div>
                             </div>
                         </div>
@@ -210,6 +210,23 @@
                     <a class="btn btn--green" href="#">Discover all tours</a>
                 </div>
             </section>
+            <div class="popup" id='popup'>
+                <div class="popup__content">
+                    <div class="popup__content--left">
+                        <img src="img/nat-8.jpg" alt="tour" class='popup__img'>
+                        <img src="img/nat-9.jpg" alt="tour" class='popup__img'>
+                    </div>
+                    <div class="popup__content--right">
+                        <a href="#section-tours" class="popup__close">&times;</a>
+                        <h2 class="heading-secondary u-margin-bottom-medium">Start booking now</h2>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these terms before booking</h3>
+                        <p class="popup__text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur aperiam dolores omnis magni assumenda illo, consectetur eveniet temporibus amet voluptas expedita distinctio dignissimos numquam facere! Eum aut animi necessitatibus cum. Sectetur eveniet temporibus amet voluptas expedita distinctio dignissimos numquam facere! Eum aut animi necessitatibus cum.
+                        </p>
+                        <a href="#" class="btn btn--green u-margin-top-medium">Book now</a>
+                    </div>
+                </div>
+            </div>
             <section class="section-stories">
                 <div class="bg-video">
                     <video class="bg-video__content" autoplay muted loop>
