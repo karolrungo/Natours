@@ -32,7 +32,9 @@ var config = {
   cssoutname: 'style.css',
   jsoutname: 'script.js',
   cssreplaceout: 'css/style.css',
-  jsreplaceout: 'js/script.js'
+  jsreplaceout: 'js/script.js',
+  fontsIn: 'src/css/fonts/**/*',
+  fontsOut: 'dist/css/fonts',
 };
 
 gulp.task('reload', function() {
@@ -101,12 +103,17 @@ gulp.task('html', function() {
     .pipe(gulp.dest(config.dist))
 });
 
+gulp.task('fonts', function() {
+    return gulp.src(config.fontsIn)
+            .pipe(gulp.dest(config.fontsOut));
+});
+
 gulp.task('clean', function() {
   return del([config.dist]);
 });
 
 gulp.task('build', function() {
-  sequence('clean', ['html', 'js', 'css', 'img']);
+  sequence('clean', ['html', 'js', 'css', 'img', 'fonts']);
 });
 
 gulp.task('default', ['serve']);
