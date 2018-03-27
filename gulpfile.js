@@ -14,6 +14,7 @@ var sequence = require('run-sequence');
 var rename = require('gulp-rename');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
+var deploy = require('gulp-gh-pages');
 
 var config = {
   dist: 'dist/',
@@ -109,3 +110,8 @@ gulp.task('build', function() {
 });
 
 gulp.task('default', ['serve']);
+
+gulp.task('deploy', function () {
+  return gulp.src(config.dist + '/**/*')
+    .pipe(deploy())
+});
