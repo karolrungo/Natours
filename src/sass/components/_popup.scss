@@ -34,9 +34,7 @@
             display: table-cell;
 
             @include respond(tab-port){
-                display: table-row;
-                width: 100%;
-
+                display: none;
             }
         }
 
@@ -48,7 +46,6 @@
             position: relative;
 
             @include respond(tab-port){
-                display: table-row;
                 width: 100%;
             }
         }
@@ -57,12 +54,6 @@
     &__img{
         display: block;
         width: 100%;
-
-        @include respond(tab-port){
-            display: inline-block;
-            width: 49%;;
-            max-height: 20rem;
-        }
     }
 
     &__text{
