@@ -55,4 +55,26 @@
         transform: translateX(-4rem) scale(1);
         filter: blur(3px) brightness(80%);
     }
+
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone){
+        transform: skewX(0);
+
+        & > *{
+            transform: skewX(0);
+        }
+
+        &__shape{
+
+            shape-outside: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            transform: translateX(-3rem) skewX(0);
+            position: relative;
+        }
+    }
 }
