@@ -26,6 +26,11 @@
     text-align: center;
     display: grid;
     cursor: pointer;
+  
+    @include respond(tab-port){
+      top: 4rem;
+      right: 4rem;
+    }
   }
 
   &__background{
@@ -38,6 +43,11 @@
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     z-index: 1000;
     transition: all .8s;
+
+    @include respond(tab-port){
+      top: 4.5rem;
+      right: 4.5rem;
+    }
   }
 
   &__nav{
