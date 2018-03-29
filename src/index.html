@@ -64,9 +64,18 @@
                     </div>
                     <div class='col-1-of-2'>
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo1" class="composition__photo composition__photo--p1">
-                            <img src="img/nat-2-large.jpg" alt="Photo2" class="composition__photo composition__photo--p2">
-                            <img src="img/nat-3-large.jpg" alt="Photo3" class="composition__photo composition__photo--p3">
+                          <img srcset="img/nat-1-large.jpg 300w, img/nat-1.jpg 1000w"
+                               alt="Photo1"
+                               class="composition__photo composition__photo--p1"
+                               sizes="(max-widht: 900px) 20vw, (max-width: 600px) 30vw, 300px">
+                          <img srcset="img/nat-2-large.jpg 300w, img/nat-2.jpg 1000w"
+                               alt="Photo2"
+                               class="composition__photo composition__photo--p2"
+                               sizes="(max-widht: 900px) 20vw, (max-width: 600px) 30vw, 300px">
+                          <img srcset="img/nat-3-large.jpg 300w, img/nat-3.jpg 1000w"
+                               alt="Photo3"
+                               class="composition__photo composition__photo--p3"
+                               sizes="(max-widht: 900px) 20vw, (max-width: 600px) 30vw, 300px">
                         </div>
                     </div>
                 </div>
@@ -290,14 +299,14 @@
                                             <span class="form__radio-button"></span>
                                             Small tour group
                                         </label>
-                                    </div>    
+                                    </div>
                                     <div class="form__radio-group">
                                         <input type="radio" class='form__radio-input' id='large' name="size">
                                         <label for="large" class='form__radio-label'>
                                             <span class="form__radio-button"></span>
                                             Large tour group
                                         </label>
-                                    </div>    
+                                    </div>
                                 </div>
                                 <div class="form__group">
                                     <button class="btn btn--green" href="#">Next step &rarr;</button>
@@ -314,7 +323,7 @@
                     <!--art direction- responsive images -->
                     <source srcset='img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x' media='(max-width: 37.5em)'>
                     <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="full logo">
-                </picture>                
+                  </picture>
             </div>
             <div class="footer__row">
                 <div class="footer__navigation">
